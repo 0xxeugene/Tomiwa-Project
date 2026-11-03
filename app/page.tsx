@@ -137,9 +137,9 @@ export default function PortfolioPage() {
 
   const copyEmail = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText("oluwatomiwa.awodokun@klario.finance");
+      navigator.clipboard.writeText("awodokuntomiwa@gmail.com");
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 2200);
     }
   };
 
@@ -172,6 +172,12 @@ export default function PortfolioPage() {
               Philosophy
             </a>
             <a
+              href="mailto:awodokuntomiwa@gmail.com?subject=Let's%20discuss"
+              className="hidden sm:inline opacity-60 hover:opacity-100 transition-opacity"
+            >
+              Inbox ↗
+            </a>
+            <a
               href="https://www.klario.finance/"
               target="_blank"
               rel="noopener noreferrer"
@@ -188,45 +194,50 @@ export default function PortfolioPage() {
               SwiftLog ↗
             </a>
 
-            {/* Apple Glassmorphic Light / Dark Toggle */}
-            <div
-              role="group"
-              aria-label="Theme mode"
-              className={`flex items-center rounded-full p-1 backdrop-blur-2xl transition-all duration-300 shadow-sm ${
+            {/* Apple Glassmorphic Minimalist Theme Switcher */}
+            <button
+              type="button"
+              onClick={() => setTheme(isDark ? "claude" : "openai")}
+              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+              className={`flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full backdrop-blur-2xl transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95 shadow-sm ${
                 isDark
-                  ? "bg-white/[0.07] border border-white/[0.14] shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]"
-                  : "bg-black/[0.04] border border-black/[0.08] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]"
+                  ? "bg-white/[0.08] border border-white/[0.14] text-white hover:bg-white/[0.15] shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]"
+                  : "bg-black/[0.04] border border-black/[0.08] text-[#141413] hover:bg-black/[0.08] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]"
               }`}
+              title={isDark ? "Switch to Light mode" : "Switch to Dark mode"}
             >
-              <button
-                type="button"
-                onClick={() => setTheme("claude")}
-                aria-pressed={!isDark}
-                className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs transition-all duration-300 cursor-pointer ${
-                  !isDark
-                    ? "bg-white/90 text-[#141413] shadow-xs backdrop-blur-md font-medium"
-                    : "text-white/60 hover:text-white"
-                }`}
-                title="Switch to Light Theme"
-              >
-                <span className="text-xs">☀️</span>
-                <span className="font-mono text-[11px]">Light</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setTheme("openai")}
-                aria-pressed={isDark}
-                className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs transition-all duration-300 cursor-pointer ${
-                  isDark
-                    ? "bg-[#222220]/90 text-white shadow-xs backdrop-blur-md font-medium border border-white/10"
-                    : "text-black/60 hover:text-black"
-                }`}
-                title="Switch to Dark Theme"
-              >
-                <span className="text-xs">🌙</span>
-                <span className="font-mono text-[11px]">Dark</span>
-              </button>
-            </div>
+              {isDark ? (
+                /* Minimal monochrome Sun icon */
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 rotate-0 hover:rotate-45"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ) : (
+                /* Minimal monochrome Moon icon */
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 -rotate-12 hover:rotate-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </header>
@@ -252,14 +263,27 @@ export default function PortfolioPage() {
             </div>
 
             <div className="mt-12 sm:mt-16 flex flex-wrap items-center gap-4 text-xs font-mono animate-fade-up delay-1">
+              {/* Primary Direct Mailto Inbox Action */}
+              <a
+                href="mailto:awodokuntomiwa@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Let's%20Discuss"
+                className={`rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-1.5 ${
+                  isDark
+                    ? "bg-[#EDEDED] text-[#0A0A0A] hover:bg-white"
+                    : "bg-[#141413] text-[#FAF9F5] hover:bg-[#2B2B28]"
+                }`}
+              >
+                <span>Send me an inbox — let&apos;s discuss</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+
               <a
                 href="https://www.klario.finance/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
+                className={`rounded-full border px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
                   isDark
-                    ? "bg-[#EDEDED] text-[#0A0A0A] hover:bg-white"
-                    : "bg-[#141413] text-[#FAF9F5] hover:bg-[#2B2B28]"
+                    ? "border-[#262624] hover:bg-[#1A1A18]"
+                    : "border-[#E0DCD1] hover:bg-white"
                 }`}
               >
                 klario.finance ↗
@@ -281,7 +305,7 @@ export default function PortfolioPage() {
                 onClick={copyEmail}
                 className="opacity-60 hover:opacity-100 transition-opacity px-2 py-2.5 cursor-pointer"
               >
-                {copied ? "Copied email ✓" : "Copy email"}
+                {copied ? "Copied awodokuntomiwa@gmail.com ✓" : "Copy email"}
               </button>
             </div>
           </section>
@@ -572,7 +596,6 @@ export default function PortfolioPage() {
 
           {/* =========================================================
               06 // DEDICATED DESIGN PHILOSOPHY SECTION
-              (Jony Ive, Steve Jobs, and Subterranean Complexity)
              ========================================================= */}
           <section
             id="philosophy"
@@ -703,9 +726,57 @@ export default function PortfolioPage() {
             </div>
           </section>
 
+          {/* =========================================================
+              LET'S DISCUSS — DIRECT INBOX CALL-TO-ACTION
+             ========================================================= */}
+          <section className="pb-36 sm:pb-48 border-t border-current/10 pt-20 sm:pt-28">
+            <div className="max-w-3xl space-y-8">
+              <div className="font-mono text-xs uppercase tracking-wider opacity-50">
+                Available for Select Advisory, Product Roles &amp; Systems
+              </div>
+              <h2
+                className="text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]"
+                style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
+              >
+                Have a complex problem? <br />
+                <span className="italic font-normal opacity-80">
+                  Let&apos;s build something clear.
+                </span>
+              </h2>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
+                <a
+                  href="mailto:awodokuntomiwa@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Let's%20Discuss"
+                  className={`rounded-full px-6 py-3.5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-sm font-sans font-medium ${
+                    isDark
+                      ? "bg-[#EDEDED] text-[#0A0A0A] hover:bg-white"
+                      : "bg-[#141413] text-[#FAF9F5] hover:bg-[#2B2B28]"
+                  }`}
+                >
+                  <span>Send me an inbox — let&apos;s discuss</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="opacity-70 hover:opacity-100 transition-opacity px-4 py-3.5 cursor-pointer border border-current/20 rounded-full"
+                >
+                  {copied ? "Copied awodokuntomiwa@gmail.com ✓" : "Copy awodokuntomiwa@gmail.com"}
+                </button>
+              </div>
+            </div>
+          </section>
+
           {/* Minimal Static Footer */}
-          <footer className="pt-20 pb-32 border-t border-current/10 flex flex-col sm:flex-row items-baseline justify-between gap-6 text-xs font-mono opacity-50">
+          <footer className="pt-16 pb-28 border-t border-current/10 flex flex-col sm:flex-row items-baseline justify-between gap-6 text-xs font-mono opacity-50">
             <div>Oluwatomiwa Awodokun</div>
+            <a
+              href="mailto:awodokuntomiwa@gmail.com"
+              className="hover:underline underline-offset-4"
+            >
+              awodokuntomiwa@gmail.com
+            </a>
             <div>2026</div>
           </footer>
         </div>
