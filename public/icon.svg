@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A18" />
+      <stop offset="100%" stop-color="#0A0A0A" />
+    </linearGradient>
+    <linearGradient id="strokeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.22)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.04)" />
+    </linearGradient>
+  </defs>
+
+  <!-- Apple Squircle Outer Shell -->
+  <rect
+    x="8"
+    y="8"
+    width="496"
+    height="496"
+    rx="116"
+    fill="url(#bgGrad)"
+    stroke="url(#strokeGrad)"
+    stroke-width="12"
+  />
+
+  <!-- Subtle Inner Specular Light -->
+  <rect
+    x="24"
+    y="24"
+    width="464"
+    height="232"
+    rx="100"
+    fill="none"
+    stroke="rgba(255,255,255,0.06)"
+    stroke-width="2"
+  />
+
+  <!-- Minimal Monogram "OA" in Geist Geometry -->
+  <text
+    x="256"
+    y="328"
+    text-anchor="middle"
+    font-family="-apple-system, BlinkMacSystemFont, 'Geist', 'SF Pro Display', 'Inter', sans-serif"
+    font-weight="600"
+    font-size="208"
+    letter-spacing="-10"
+    fill="#FAF9F5"
+  >
+    OA
+  </text>
+
+  <!-- Editorial Signature Terracotta Accent Dot -->
+  <circle cx="396" cy="180" r="18" fill="#D97757" />
+</svg>
+

@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   title: "Oluwatomiwa Awodokun — Product Design & Research",
   description:
     "Portfolio of Oluwatomiwa Awodokun. Product Designer and Researcher. Previously enterprise digital solutions for MTN, Airtel, and Alpha Morgan at Lotus Beta Analytics; Head of Marketing & Research at Klario Finance.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({
