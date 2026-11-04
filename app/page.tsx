@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 
+import tomiwaImg from "../asset/tomiwa.jpg";
 import img8432 from "../asset/IMG_8432.png";
 import img8433 from "../asset/IMG_8433.png";
 import img8434 from "../asset/IMG_8434.png";
@@ -17,18 +18,35 @@ interface LightboxState {
 }
 
 const BIO_SEGMENTS = [
-  { text: "Tomiwa designs across the spectrum of human trust—bridging enterprise scale and consumer nuance. He has crafted complex digital solutions for telecommunications leaders ", underline: false },
+  {
+    text: "Tomiwa designs across the spectrum of human trust—bridging enterprise scale and consumer nuance. During his tenure at ",
+    underline: false,
+  },
+  { text: "Lotus Beta Analytics", underline: true },
+  {
+    text: ", he crafted complex digital solutions for telecommunications leaders ",
+    underline: false,
+  },
   { text: "MTN", underline: true },
   { text: " and ", underline: false },
   { text: "Airtel", underline: true },
-  { text: ", investment banking infrastructure at ", underline: false },
+  {
+    text: ", as well as investment banking infrastructure at ",
+    underline: false,
+  },
   { text: "Alpha Morgan Capital", underline: true },
-  { text: ", and leads research-driven product architecture at ", underline: false },
+  {
+    text: "—before taking the helm of research-driven product architecture at ",
+    underline: false,
+  },
   { text: "Klario Finance", underline: true },
   { text: ".", underline: false },
 ] as const;
 
-const TOTAL_BIO_CHARS = BIO_SEGMENTS.reduce((sum, seg) => sum + seg.text.length, 0);
+const TOTAL_BIO_CHARS = BIO_SEGMENTS.reduce(
+  (sum, seg) => sum + seg.text.length,
+  0,
+);
 
 export default function PortfolioPage() {
   const [theme, setTheme] = useState<ThemeMode>("claude");
@@ -80,7 +98,7 @@ export default function PortfolioPage() {
           setHasTriggeredTyping(true);
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     observer.observe(el);
@@ -148,13 +166,11 @@ export default function PortfolioPage() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-700 ease-out ${
-        isDark
-          ? "bg-[#0A0A0A] text-[#EDEDED]"
-          : "bg-[#FBFAF6] text-[#141413]"
+      className={`min-h-screen transition-colors duration-700 ease-out font-sans ${
+        isDark ? "bg-[#0A0A0A] text-[#EDEDED]" : "bg-[#FBFAF6] text-[#141413]"
       }`}
     >
-      {/* Minimal Top Nav with Apple Glassmorphic Emoji Theme Toggle */}
+      {/* Minimal Top Nav with Apple Glassmorphic Monochrome Switch */}
       <header className="px-6 sm:px-12 lg:px-20 pt-8 sm:pt-12 pb-6 animate-fade-in">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <a
@@ -198,7 +214,9 @@ export default function PortfolioPage() {
             <button
               type="button"
               onClick={() => setTheme(isDark ? "claude" : "openai")}
-              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+              aria-label={
+                isDark ? "Switch to light theme" : "Switch to dark theme"
+              }
               className={`flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full backdrop-blur-2xl transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95 shadow-sm ${
                 isDark
                   ? "bg-white/[0.08] border border-white/[0.14] text-white hover:bg-white/[0.15] shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]"
@@ -207,7 +225,6 @@ export default function PortfolioPage() {
               title={isDark ? "Switch to Light mode" : "Switch to Dark mode"}
             >
               {isDark ? (
-                /* Minimal monochrome Sun icon */
                 <svg
                   className="w-4 h-4 transition-transform duration-300 rotate-0 hover:rotate-45"
                   fill="none"
@@ -222,7 +239,6 @@ export default function PortfolioPage() {
                   />
                 </svg>
               ) : (
-                /* Minimal monochrome Moon icon */
                 <svg
                   className="w-4 h-4 transition-transform duration-300 -rotate-12 hover:rotate-0"
                   fill="none"
@@ -244,82 +260,139 @@ export default function PortfolioPage() {
 
       <main id="top" className="px-6 sm:px-12 lg:px-20">
         <div className="mx-auto max-w-6xl">
-          {/* Hero Section */}
-          <section className="pt-24 pb-24 sm:pt-36 sm:pb-32 lg:pt-44 lg:pb-40">
-            <div className="animate-fade-up">
-              <span className="font-mono text-xs uppercase tracking-wider opacity-50 block mb-6">
-                Product Designer &amp; Researcher
-              </span>
-              <h1
-                className="text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08] max-w-4xl"
-                style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-              >
-                Oluwatomiwa Awodokun.
-                <br />
-                <span className="italic font-normal opacity-75">
-                  Quiet, high-trust digital systems.
+          {/* Hero Section — Clean Geist Typography with Tomiwa's Portrait */}
+          <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-36">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Column: Introduction & CTAs */}
+              <div className="lg:col-span-7 space-y-8 animate-fade-up">
+                <span className="font-mono text-xs uppercase tracking-wider opacity-50 block">
+                  Product Designer &amp; Researcher
                 </span>
-              </h1>
-            </div>
 
-            <div className="mt-12 sm:mt-16 flex flex-wrap items-center gap-4 text-xs font-mono animate-fade-up delay-1">
-              {/* Primary Direct Mailto Inbox Action */}
-              <a
-                href="mailto:awodokuntomiwa@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Let's%20Discuss"
-                className={`rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-1.5 ${
-                  isDark
-                    ? "bg-[#EDEDED] text-[#0A0A0A] hover:bg-white"
-                    : "bg-[#141413] text-[#FAF9F5] hover:bg-[#2B2B28]"
-                }`}
-              >
-                <span>Send me an inbox — let&apos;s discuss</span>
-                <span aria-hidden="true">↗</span>
-              </a>
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.05]">
+                  Oluwatomiwa Awodokun.
+                  <br />
+                  <span className="font-normal opacity-60">
+                    Quiet, high-trust digital systems.
+                  </span>
+                </h1>
 
-              <a
-                href="https://www.klario.finance/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`rounded-full border px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
-                  isDark
-                    ? "border-[#262624] hover:bg-[#1A1A18]"
-                    : "border-[#E0DCD1] hover:bg-white"
-                }`}
-              >
-                klario.finance ↗
-              </a>
-              <a
-                href="https://swiftlogwebsite.netlify.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`rounded-full border px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
-                  isDark
-                    ? "border-[#262624] hover:bg-[#1A1A18]"
-                    : "border-[#E0DCD1] hover:bg-white"
-                }`}
-              >
-                swiftlogwebsite.netlify.app ↗
-              </a>
-              <button
-                type="button"
-                onClick={copyEmail}
-                className="opacity-60 hover:opacity-100 transition-opacity px-2 py-2.5 cursor-pointer"
-              >
-                {copied ? "Copied awodokuntomiwa@gmail.com ✓" : "Copy email"}
-              </button>
+                <p className="text-base sm:text-lg leading-relaxed font-normal opacity-80 max-w-xl">
+                  Designing effortless human interfaces over deeply complex
+                  infrastructure—from enterprise telecoms at{" "}
+                  <strong className="font-medium text-current">
+                    Lotus Beta Analytics
+                  </strong>{" "}
+                  to AI-driven open banking at{" "}
+                  <strong className="font-medium text-current">
+                    Klario Finance
+                  </strong>
+                  .
+                </p>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3.5 text-xs font-mono">
+                  <a
+                    href="mailto:awodokuntomiwa@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Let's%20Discuss"
+                    className={`rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.02] flex items-center gap-1.5 font-medium ${
+                      isDark
+                        ? "bg-[#EDEDED] text-[#0A0A0A] hover:bg-white"
+                        : "bg-[#141413] text-[#FAF9F5] hover:bg-[#2B2B28]"
+                    }`}
+                  >
+                    <span>Send me an inbox — let&apos;s discuss</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+
+                  <a
+                    href="https://www.klario.finance/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`rounded-full border px-4 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
+                      isDark
+                        ? "border-[#262624] hover:bg-[#1A1A18]"
+                        : "border-[#E0DCD1] hover:bg-white"
+                    }`}
+                  >
+                    klario.finance ↗
+                  </a>
+
+                  <a
+                    href="https://swiftlogwebsite.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`rounded-full border px-4 py-2.5 transition-all duration-300 hover:scale-[1.02] ${
+                      isDark
+                        ? "border-[#262624] hover:bg-[#1A1A18]"
+                        : "border-[#E0DCD1] hover:bg-white"
+                    }`}
+                  >
+                    swiftlogwebsite.netlify.app ↗
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="opacity-60 hover:opacity-100 transition-opacity px-2 py-2.5 cursor-pointer"
+                  >
+                    {copied ? "Copied ✓" : "Copy email"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Column: Tomiwa's Portrait Image */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up delay-1">
+                <div
+                  onClick={() =>
+                    setLightbox({
+                      src: tomiwaImg,
+                      title:
+                        "Oluwatomiwa Awodokun — Product Designer & Researcher",
+                    })
+                  }
+                  className={`group relative overflow-hidden rounded-3xl border p-2 sm:p-2.5 transition-all duration-500 cursor-pointer hover:-translate-y-1 ${
+                    isDark
+                      ? "border-[#20201E] bg-[#121211] hover:border-[#383835] hover:shadow-2xl"
+                      : "border-[#EAE7DC] bg-white hover:border-[#CCC7B8] hover:shadow-xl"
+                  }`}
+                >
+                  <div className="overflow-hidden rounded-2xl relative w-[280px] sm:w-[320px] aspect-[3/4]">
+                    <Image
+                      src={tomiwaImg}
+                      alt="Oluwatomiwa Awodokun — Product Designer & Researcher"
+                      fill
+                      sizes="(max-width: 768px) 280px, 320px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      priority
+                      placeholder="blur"
+                    />
+                  </div>
+
+                  {/* Minimal subtle pill tag */}
+                  <div className="pt-3 pb-1 px-2 flex items-center justify-between text-[11px] font-mono opacity-65">
+                    <span>Oluwatomiwa Awodokun</span>
+                    <span className="text-[10px] group-hover:translate-x-0.5 transition-transform">
+                      View Full ↗
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Enterprise Bio with Typewriter Streaming & Momentary Scroll Lock */}
+          {/* =================================================================
+              ENTERPRISE BIO (MTN, Airtel, Alpha Morgan at Lotus Beta Analytics)
+             ================================================================= */}
           <section
             ref={bioRef}
-            onClick={hasTriggeredTyping && !isTypingDone ? handleSkipTyping : undefined}
-            className="pb-32 sm:pb-44 lg:pb-56 max-w-3xl relative"
+            onClick={
+              hasTriggeredTyping && !isTypingDone ? handleSkipTyping : undefined
+            }
+            className="pb-32 sm:pb-44 lg:pb-56 max-w-4xl relative"
           >
             <div className="border-t border-current/10 pt-14 sm:pt-20">
               <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-xs uppercase tracking-wider opacity-50">
-                  Background &amp; Enterprise Track
+                  Background · Lotus Beta Analytics &amp; Enterprise Track
                 </span>
                 {hasTriggeredTyping && !isTypingDone && (
                   <button
@@ -332,11 +405,8 @@ export default function PortfolioPage() {
                 )}
               </div>
 
-              {/* Dynamic Typewritten Text */}
-              <p
-                className="text-xl sm:text-2xl lg:text-[28px] font-light leading-relaxed tracking-tight min-h-[120px]"
-                style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-              >
+              {/* Dynamic Typewritten Text in Geist Typography */}
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-light leading-relaxed tracking-tight min-h-[140px]">
                 {BIO_SEGMENTS.map((seg, idx) => {
                   const segStart = charsTracked;
                   charsTracked += seg.text.length;
@@ -345,7 +415,10 @@ export default function PortfolioPage() {
                     return null;
                   }
 
-                  const visibleSlice = seg.text.slice(0, currentChars - segStart);
+                  const visibleSlice = seg.text.slice(
+                    0,
+                    currentChars - segStart,
+                  );
 
                   if (seg.underline) {
                     return (
@@ -377,6 +450,9 @@ export default function PortfolioPage() {
                     : "opacity-0 translate-y-2 pointer-events-none"
                 }`}
               >
+                <span className="rounded-full border border-current/20 px-3 py-1 bg-current/5">
+                  Lotus Beta Analytics (LBAN)
+                </span>
                 <span className="rounded-full border border-current/15 px-3 py-1">
                   MTN Enterprise
                 </span>
@@ -550,13 +626,10 @@ export default function PortfolioPage() {
               >
                 <div className="font-mono text-xs opacity-50">04 / FINTECH</div>
                 <div>
-                  <h3
-                    className="text-3xl sm:text-4xl tracking-tight"
-                    style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-                  >
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
                     Klario Finance
                   </h3>
-                  <p className="mt-3 text-xs font-mono opacity-60">
+                  <p className="mt-2 text-xs font-mono opacity-60">
                     AI Financial Intelligence · Open Banking
                   </p>
                 </div>
@@ -575,15 +648,14 @@ export default function PortfolioPage() {
                     : "border-[#EAE7DC] bg-white hover:border-[#CCC7B8] hover:shadow-xl"
                 }`}
               >
-                <div className="font-mono text-xs opacity-50">05 / LOGISTICS</div>
+                <div className="font-mono text-xs opacity-50">
+                  05 / LOGISTICS
+                </div>
                 <div>
-                  <h3
-                    className="text-3xl sm:text-4xl tracking-tight"
-                    style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-                  >
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
                     SwiftLog
                   </h3>
-                  <p className="mt-3 text-xs font-mono opacity-60">
+                  <p className="mt-2 text-xs font-mono opacity-60">
                     Freight Telemetry &amp; Courier Dispatch
                   </p>
                 </div>
@@ -596,6 +668,7 @@ export default function PortfolioPage() {
 
           {/* =========================================================
               06 // DEDICATED DESIGN PHILOSOPHY SECTION
+              (Jony Ive, Steve Jobs, and Subterranean Complexity)
              ========================================================= */}
           <section
             id="philosophy"
@@ -607,13 +680,12 @@ export default function PortfolioPage() {
                 <span className="font-mono text-xs uppercase tracking-wider opacity-50 block">
                   Design Philosophy · The Craft of Subterranean Complexity
                 </span>
-                <h2
-                  className="text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]"
-                  style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-                >
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tighter leading-[1.12]">
                   “Simplicity is not merely the absence of clutter. It is the{" "}
-                  <span className="italic font-normal">profound mastery</span> of
-                  complexity.”
+                  <span className="font-normal opacity-70">
+                    profound mastery
+                  </span>{" "}
+                  of complexity.”
                 </h2>
               </div>
 
@@ -622,26 +694,23 @@ export default function PortfolioPage() {
                 <div className="lg:col-span-7 space-y-6 text-base sm:text-lg leading-relaxed font-light opacity-90">
                   <p>
                     Mentored from afar by the rigorous product philosophies of{" "}
-                    <strong className="font-medium text-current">Jony Ive</strong>{" "}
+                    <strong className="font-medium text-current">
+                      Jony Ive
+                    </strong>{" "}
                     and{" "}
-                    <strong className="font-medium text-current">Steve Jobs</strong>,
-                    Tomiwa treats design not as cosmetic decoration, but as an
+                    <strong className="font-medium text-current">
+                      Steve Jobs
+                    </strong>
+                    , Tomiwa treats design not as cosmetic decoration, but as an
                     act of radical empathy and structural reduction.
                   </p>
                   <p>
                     The systems that power modern society are violently complex
-                    underneath. At{" "}
-                    <span className="underline decoration-current/30 underline-offset-4">
-                      Klario Finance
-                    </span>
-                    , it is multi-bank open banking ledgers, CBN regulatory
-                    compliance, automated savings vaults, and Naira inflation
-                    hedges. In cross-border mobility with{" "}
-                    <span className="underline decoration-current/30 underline-offset-4">
-                      Arrivo
-                    </span>
-                    , it is multi-currency settlement rails and instantaneous
-                    card issuance. At enterprise telecom scale with{" "}
+                    underneath. During his enterprise work at{" "}
+                    <strong className="font-medium text-current">
+                      Lotus Beta Analytics
+                    </strong>
+                    , he tackled high-scale distributed infrastructures for{" "}
                     <span className="underline decoration-current/30 underline-offset-4">
                       MTN
                     </span>{" "}
@@ -649,15 +718,24 @@ export default function PortfolioPage() {
                     <span className="underline decoration-current/30 underline-offset-4">
                       Airtel
                     </span>
-                    , it is massive distributed infrastructure.
+                    , alongside investment banking solutions at{" "}
+                    <span className="underline decoration-current/30 underline-offset-4">
+                      Alpha Morgan Capital
+                    </span>
+                    . At{" "}
+                    <span className="underline decoration-current/30 underline-offset-4">
+                      Klario Finance
+                    </span>
+                    , that same ethos drives multi-bank open banking ledgers,
+                    CBN regulatory compliance, and automated savings vaults.
                   </p>
                   <p>
-                    Tomiwa’s conviction is that the designer’s primary duty is to
-                    absorb all that subterranean friction entirely—so that what
-                    the human experiences on the surface feels inevitable, calm,
-                    and effortlessly easy to navigate. When an interface is truly
-                    right, it doesn’t broadcast how clever the system is; it feels
-                    as natural as breathing.
+                    Tomiwa’s conviction is that the designer’s primary duty is
+                    to absorb all that subterranean friction entirely—so that
+                    what the human experiences on the surface feels inevitable,
+                    calm, and effortlessly easy to navigate. When an interface
+                    is truly right, it doesn’t broadcast how clever the system
+                    is; it feels as natural as breathing.
                   </p>
                 </div>
 
@@ -718,7 +796,8 @@ export default function PortfolioPage() {
                     </h3>
                     <p className="text-xs sm:text-sm leading-relaxed opacity-70">
                       Honor human attention with quiet whitespace, honest price
-                      anchoring, and transparent flows that build enduring trust.
+                      anchoring, and transparent flows that build enduring
+                      trust.
                     </p>
                   </div>
                 </div>
@@ -734,12 +813,9 @@ export default function PortfolioPage() {
               <div className="font-mono text-xs uppercase tracking-wider opacity-50">
                 Available for Select Advisory, Product Roles &amp; Systems
               </div>
-              <h2
-                className="text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]"
-                style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
-              >
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tighter leading-[1.12]">
                 Have a complex problem? <br />
-                <span className="italic font-normal opacity-80">
+                <span className="font-normal opacity-70">
                   Let&apos;s build something clear.
                 </span>
               </h2>
@@ -762,7 +838,9 @@ export default function PortfolioPage() {
                   onClick={copyEmail}
                   className="opacity-70 hover:opacity-100 transition-opacity px-4 py-3.5 cursor-pointer border border-current/20 rounded-full"
                 >
-                  {copied ? "Copied awodokuntomiwa@gmail.com ✓" : "Copy awodokuntomiwa@gmail.com"}
+                  {copied
+                    ? "Copied awodokuntomiwa@gmail.com ✓"
+                    : "Copy awodokuntomiwa@gmail.com"}
                 </button>
               </div>
             </div>

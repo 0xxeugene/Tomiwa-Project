@@ -10,7 +10,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 body {
@@ -38,7 +37,7 @@ body {
   background: rgba(140, 138, 132, 0.45);
 }
 
-/* Minimalist Editorial Animations */
+/* Minimalist Animations */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
